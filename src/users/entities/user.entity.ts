@@ -1,9 +1,7 @@
-import { Entity, Column, Index, Generated } from 'typeorm';
-
-import BaseEntity from '../../entities/baseEntity';
+import { Entity, Column, Index, Generated, PrimaryColumn } from 'typeorm';
 
 @Entity('users')
-export default class User extends BaseEntity {
+export default class User {
   @Index()
   @Generated('increment')
   @Column({ type: 'bigint', nullable: false })
@@ -18,6 +16,6 @@ export default class User extends BaseEntity {
   @Column({ type: 'varchar', name: 'password', nullable: false, unique: true })
   password: string;
 
-  @Column({ type: 'varchar', nullable: false, unique: true })
+  @PrimaryColumn({ type: 'varchar', nullable: false, unique: true })
   email: string;
 }
