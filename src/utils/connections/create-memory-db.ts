@@ -21,7 +21,6 @@ export const dataSource = new DataSource({
   synchronize: false,
   logging: ['error'],
   entities: [User],
-  migrations: ['src/database/migrations/*.ts'],
   ssl: true,
   extra: {
     ssl: {
