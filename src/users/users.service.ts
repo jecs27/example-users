@@ -22,9 +22,14 @@ export class UsersService {
     return this.userRepository.save(user);
   }
 
-  // async update(id: number, user: Partial<User>): Promise<User> {
-  //   return this.userRepository.findOneBy({ userId });
-  // }
+  async update(userId: number, user: Partial<User>): Promise<User> {
+    const existingUser = await this.userRepository.findOneBy({ userId });
+    if (!existingUser) {
+      throw new Error(`User with ID ${userId} not found`);
+    }
+    const updatedUser = { ...existingUser, ...user };
+    return this.userRepository.save(updatedUser);
+  }
 
   async remove(userId: number): Promise<void> {
     await this.userRepository.delete(userId);

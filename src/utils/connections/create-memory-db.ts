@@ -21,6 +21,7 @@ export const dataSource = new DataSource({
   synchronize: false,
   logging: ['error'],
   entities: [User],
+  migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   ssl: true,
   extra: {
     ssl: {
