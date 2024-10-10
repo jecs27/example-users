@@ -1,4 +1,4 @@
-name: Build and Package NestJS Application
+name: Build and Deploy NestJS Application
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted,app-test]
 
     steps:
       - name: Check out code
@@ -27,11 +27,7 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Package application
+      - name: Move files to destination
         run: |
-          mkdir -p package
-          cp -r dist package/
-          cp -r package.json package/
-          cp -r package-lock.json package/
-          cd package
-          zip -r ../nestjs-app.zip .
+          mkdir -p ~/Desktop/code
+          mv dist/* ~/Desktop/code/
