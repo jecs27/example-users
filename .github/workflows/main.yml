@@ -27,4 +27,4 @@ jobs:
       - name: Move files to destination
         run: |
           mkdir -p ~/Desktop/code/express-example
-          mv dist/* ~/Desktop/code/express-example
+          mv * ~/Desktop/code/express-example
